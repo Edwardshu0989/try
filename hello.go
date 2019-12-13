@@ -1,9 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"io/ioutil"
 )
 
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
+
 func main() {
-	fmt.Println("hello,world")
+
+	d1 := []byte("hello\ngo\n\nkkkkk")
+	err := ioutil.WriteFile("test.txt", d1, 0644)
+	check(err)
 }
